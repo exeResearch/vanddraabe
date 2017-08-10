@@ -2,5 +2,7 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^data-raw$
+^CONDUCT\.md$
+^README\.Rmd$
 ^\.travis\.yml$
 ^vignettesLongForm$
