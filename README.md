@@ -3,7 +3,7 @@
 vanddraabe: Identification and Statistical Analysis of Conserved Waters in Proteins
 ===================================================================================
 
-[![Travis-CI Build Status](https://travis-ci.org/exeResearch/vanddraabe.svg?branch=master)](https://travis-ci.org/exeResearch/vanddraabe) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/exeResearch/vanddraabe?branch=master&svg=true)](https://ci.appveyor.com/project/exeResearch/vanddraabe) [![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/vanddraabe)](https://CRAN.R-project.org/package=vanddraabe) [![CRAN\_Download\_Badge](http://cranlogs.r-pkg.org/badges/vanddraabe)](https://CRAN.R-project.org/package=vanddraabe)
+[![Travis-CI Build Status](https://travis-ci.org/exeResearch/vanddraabe.svg?branch=master)](https://travis-ci.org/exeResearch/vanddraabe) [![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/vanddraabe)](https://CRAN.R-project.org/package=vanddraabe) [![CRAN\_Download\_Badge](http://cranlogs.r-pkg.org/badges/vanddraabe)](https://CRAN.R-project.org/package=vanddraabe)
 
 `vanddraabe` provides a powerful way to identify and analyze conserved waters within crystallographic protein structures and molecular dynamics simulation trajectories. Statistical parameters for each water cluster, informative graphs, and a [PyMOL](http://www.pymol.org) session file to visually explore the conserved waters and protein are returned. Hydrophilicity is the propensity of waters to congregate near specific protein atoms and is related to conserved waters. An informatics derived set of hydrophilicity values are provided based on a large, high-quality X-ray protein structure dataset.
 
