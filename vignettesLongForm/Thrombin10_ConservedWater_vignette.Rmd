@@ -3,23 +3,14 @@ title: 'vanddraabe: Thrombin Conserved Waters'
 author: "Emilio Xavier Esposito"
 date: '`r Sys.Date()`'
 output:
-  pdf_document:
-    toc: yes
-    toc_depth: '2'
-  html_document:
-    toc: yes
-    toc_depth: 2
-    toc_float: no
-rmarkdown::html_vignette:
-  fig_caption: yes
-  fig_retina: yes
-vignette: |
-  %\VignetteIndexEntry{vanddraabe: Thrombin Conserved Waters Analysis} %\VignetteEngine{knitr::rmarkdown} %\VignetteEncoding{UTF-8}
+  html_document: default
+  pdf_document: default
+affiliation: exeResearch LLC, East Lansing, Michigan
 ---
 
 ## Introduction
 
-The ability to identify conserved waters from a collection of related protein structues is important for gaining a better understanding of the ligand binding environment. The [vanddraabe] package is based on the work of Sanschagrin and Kuhn (_Protein Science_, 1998, **7** (_10_), pp 2054-2064. [DOI: 10.1002/pro.5560071002](http://doi.org/10.1002/pro.5560071002)) and Patel, Gruning, Gunther, and Merfort (_Bioinformatics_, 2014, **30** (_20_), pp 2978-2980. [DOI: 10.1093/bioinformatics/btu424](http://doi.org/10.1093/bioinformatics/btu424)). Expanding on WatCH and PyWATER, [vanddraabe] and returns statistical parameters for each water cluster, informative graphs, and a PyMOL session file to visually explore the conserved waters and protein along with intermediate information. 
+The ability to identify conserved waters from a collection of related protein structues is important for gaining a better understanding of the ligand binding environment. The `vanddraabe` package is based on the work of Sanschagrin and Kuhn (_Protein Science_, 1998, **7** (_10_), pp 2054-2064. [DOI: 10.1002/pro.5560071002](http://doi.org/10.1002/pro.5560071002)) and Patel, Gruning, Gunther, and Merfort (_Bioinformatics_, 2014, **30** (_20_), pp 2978-2980. [DOI: 10.1093/bioinformatics/btu424](http://doi.org/10.1093/bioinformatics/btu424)). Expanding on WatCH and PyWATER, `vanddraabe` and returns statistical parameters for each water cluster, informative graphs, and a PyMOL session file to visually explore the conserved waters and protein along with intermediate information. 
 
 This vignette demonstrates the steps and thought process to analyze the conserved waters of ten thrombin crystallographically determined structures and is based on the work of Sanschagrin and Kuhn (_Protein Science_, 1998, **7** (_10_), pp 2054-2064). The results presented herein are part of the original vanddraabe article. There are six main steps to determine conserved water within a collection of protein structures:
 
@@ -30,7 +21,7 @@ This vignette demonstrates the steps and thought process to analyze the conserve
 - Determine conserved waters
 - Analyze and visualize results
 
-Before identifying and analyzing conserved waters, several R packages need to be loaded in addition to [vanddraabe]. To aid consistency, the `filename` prefix needs to be defined. For this example `"thrombin10"` is being used. The files (PDB, Excel workbook, and PyMOL session files) and directories (folders) generated during this analysis will start with thrombin10 while the files will also include a date-time stamp to differentiate results.
+Before identifying and analyzing conserved waters, several R packages need to be loaded in addition to `vanddraabe`. To aid consistency, the `filename` prefix needs to be defined. For this example `"thrombin10"` is being used. The files (PDB, Excel workbook, and PyMOL session files) and directories (folders) generated during this analysis will start with thrombin10 while the files will also include a date-time stamp to differentiate results.
 
 ```{r setup, message = FALSE}
 library(vanddraabe)
@@ -130,26 +121,26 @@ knitr::kable(thrombin10.CLEANED$cleaning.summary,
 
 The `cleaning.summary` is a table shows there were no thrombin structures with occupancy values outside the normal range of 0 to 1 but there was a single structure, 1ppb, with 48 atoms assigned B-values outside the normal range of 0 to 100. These 48 atoms were removed from 1ppb. Three structures had atoms with occupancy values of 0.01 or less and these atoms were also removed. Four structures had water oxygen atoms beyond 6 Angstroms from a protein atom and thus these "distant" waters were removed.
 
-```{r Bvalue summary barplot, echo=FALSE, fig.retina=1, fig.align='center', message=FALSE, warning=FALSE}
+```{r Bvalue summary barplot, echo=FALSE, fig.retina=2, fig.align='center', message=FALSE, warning=FALSE}
 BvalueBarplot.summ(data=thrombin10.CLEANED)
 ```
 
 The B-value barplots -- before the structure is cleaned -- illustrates the difference in quality of structures based on B-values. Three structures (PDBids: 1ihs, 1ppb, and 1tmt) in the Thrombin dataset have atoms with B-values of 65 or greater. Atoms with B-values greater than 60 are considered lower quality because of their greater variance. 
 
 
-```{r norm Bvalue summary barplot, echo=FALSE, fig.retina=1, fig.align='center', message=FALSE, warning=FALSE}
+```{r norm Bvalue summary barplot, echo=FALSE, fig.retina=2, fig.align='center', message=FALSE, warning=FALSE}
 normBvalueBarplot.summ(data=thrombin10.CLEANED)
 ```
 
 Normalizing the B-values provides a way to compare B-values across a collection of protein structures; Z-score values less then 0 indicate atoms with B-values less than the mean B-value for a structure while Z-score values greater than 0 indicates and atom with B-values greater than the mean B-value. Within vanddraabe, water atoms with normalized B-values greater than 1.0 are removed from analysis. The inclusion of all atoms within the protein structures indicates the overall quality of the atoms within the structure. Normalized B-values are calculated for protein, non-protein (ligands), and water atoms separately during the evaluation of atoms prior to determining conserved waters.  
 
-```{r occupancy summary barplot, echo=FALSE, fig.retina=1, fig.align='center', message=FALSE, warning=FALSE}
+```{r occupancy summary barplot, echo=FALSE, fig.retina=2, fig.align='center', message=FALSE, warning=FALSE}
 OccupancyBarplot.summ(data=thrombin10.CLEANED)
 ```
 
 While a majority of the atoms in the ten protein structures have occupancy values of 1.0, only two structures (PDBids: 1ppb and 1tmt) possess atoms present in _**all**_ copies of the protein. Interestly, these two protein structures have a wider range of atom position variance. Three structures (PDBids: 1hah, 1hai, and 1thr) have modeled atoms -- those with an occupancy values of 0.01 or less. The percentage of atoms with less then perfect occupancy for these seven structures is less than XX\%.
 
-```{r mobility summary barplot, echo=FALSE, fig.retina=1, fig.align='center', message=FALSE, warning=FALSE}
+```{r mobility summary barplot, echo=FALSE, fig.retina=2, fig.align='center', message=FALSE, warning=FALSE}
 MobilityBarplot.summ(data=thrombin10.CLEANED)
 ```
 
@@ -160,7 +151,7 @@ Mobility values take into consideration the occupancy and B-values to evaluate t
 
 The alignment of the proteins' primary sequence needs to be performed before the protein structures can be aligned. Using the "cleaned" structures, align the sequences.
 
-```{r align sequences, eval=FALSE, message=FALSE, warning=FALSE, include=TRUE}
+```{r align sequences, eval=TRUE, message=FALSE, warning=FALSE, include=TRUE}
 thrombin10.PDBs.passed <- paste("./thrombin10_CLEANED", list.files(path="./thrombin10_CLEANED/", pattern="*.pdb"), sep="/")
 
 thrombin10.PDBs.align <- pdbaln(thrombin10.PDBs.passed, fit=TRUE)
@@ -208,7 +199,7 @@ df.rmsd.melt <- melt(df.rmsd)
 
 The alignment of the ten thrombin structures was inspected via RMSD. Two different methods of RMSD calculation were used: (_i_) _with_ coordinate superposition prior to the RMSD calculation and (_ii_) _without_. The resulting RMSD values have a correlation (r) of `r round(cor(rmsd.fit.upper, rmsd.NOfit.upper), digits=2)` and the mean difference between the RMSD values is `r mean(rmsd.diff.upper)` ($\pm$ `r sd(rmsd.diff.upper)`). The small difference between the fitted and non-fitted RMSD values indicates the 1.0 Angstrom alignment volume of all ten thrombin structures is optimal to determine the conserved waters.
 
-```{r structural alignment quality (display difference histogram), echo=FALSE, fig.retina=1, fig.cap="Histogram of Absolute RMSD Differences (RMSD fit - RMSD No Fit)"}
+```{r structural alignment quality (display difference histogram), echo=FALSE, fig.retina=2, fig.cap="Histogram of Absolute RMSD Differences (RMSD fit - RMSD No Fit)"}
 ggplot(data=df.rmsd, aes(x=diff)) +
   geom_histogram(fill="white", colour="black", binwidth = 0.0025) +
   labs(x="Absolute RMSD Difference", y="Count")
@@ -273,12 +264,12 @@ The results are available within the R session and are written to the `thrombin1
 
 - **PDBsInfo_all**: The RCSB information for each PDB structure considered for the conserved water analysis.
 - **PDBsInfo_pass**: The RCSB information for each PDB structure _passing_ the user defined mobility and normalized B-value parameters for the conserved water analysis.
-- **PDB_cleanSumm**: The results from cleaning the protein structures with [CleanProteinStructures()]. The number of atoms with "Out of Range" occupancy and B-values, number of modeled (and not modeled) atoms, and number of water molecules (atoms) beyond (and within) the user defined distance are indicated along with removed from the structures. See the Cleaning Summary table above.
+- **PDB_cleanSumm**: The results from cleaning the protein structures with `CleanProteinStructures()`. The number of atoms with "Out of Range" occupancy and B-values, number of modeled (and not modeled) atoms, and number of water molecules (atoms) beyond (and within) the user defined distance are indicated along with removed from the structures. See the Cleaning Summary table above.
 - **BvalueBins**: The number of atoms with B-values within specified bins; between 0 and 100 in bins of 5.
 - **nBvalueBins**: The number of atoms with normalized B-values within specified bins; between -7 and 7 in bins of 0.10. Values less than -7 are counted in the -7-bin and values greater than 7 are counted in the 7-bin.
 - **OccBins**: The number of atoms with occupancy values within specified bins; between 0 and 1.0 in bins of 0.10.
 - **MobilityBins**: The number of atoms with mobility values within specified bins; between 0 and 6 in bins of 0.10. Values great than 6 are counted in the 6-bin.
-- **_PDBid__AliOver**: The results from the [AlignOverlap()] analysis. The reference structure is the PDBid in the sheet name and is indicated within the results. The chains meeting the user defined parameters are retained and written to a new PDB file for each structure.
+- **PDBid_AliOver**: The results from the `AlignOverlap()` analysis. The reference structure is the PDBid in the sheet name and is indicated within the results. The chains meeting the user defined parameters are retained and written to a new PDB file for each structure.
 - **ClusterStats**: The information provided in the Conserved Water Clustering Statistics Summary table below.
 - **all_ClustSumm**: Statistical information for each conserved water along with information regarding the conserved waters average environment. This summary based on the conserved water analysis when all available waters are analyzed. 
 - **all_OccurSumm**: The occurrence summary for waters that passed the user defined mobility and normalized B-value parameters. For each protein structure provided the mean and standard deviation for the experimental occupancy, experimental B-value, mobility, and normalized B-values are included along with the number of waters, number of waters passing the mobility test, number of waters passing the normalized B-value test, the number and percentage of waters passing the user defined cutoffs, and the number of clusters the waters from the protein structure participate. Also included is a heatmap indicating if the protein structure contributed to a conserved water cluster.
@@ -311,35 +302,35 @@ A collection of plots can be automatically generated to illustrate the:
 
 - **Number of waters per cluster**: A barplot displaying the number of water clusters for the number of waters in each water cluster. This histogram indicates there are 23 conserved waters with 100\% conservation; all ten protein structures contribute a water to 23 conserved water clusters. There are 470 conserved waters with contributions from less than half of the provided structures. It is expected for there to be more conserved water clusters with less than 50\% conservation than conserved waters with a water from all structures.
 
-```{r conserved waters: conservation plot, echo=TRUE, fig.retina=1, message=FALSE, warning=FALSE}
+```{r conserved waters: conservation plot, echo=TRUE, fig.retina=2, message=FALSE, warning=FALSE}
 ConservationPlot(data = thrombin10.conservedWaters, passed.waters = TRUE)
 ```
 
 - **Occupancy Barplots**: This plot depicts the amount and distribution of water occupancy values for all the structures within the analysis and are binned based on the percent conservation. Only waters with 50\% conservation or greater are displayed. Waters with 80\% or greater conservation have a mean occupancy value of 0.7 meaning the waters comprising a conserved water are present in 70\% or greater of the reflections used to construct the 3D structures of the proteins.
 
-```{r conserved waters: occupancy barplots, echo=TRUE, fig.retina=1, message=FALSE, warning=FALSE}
+```{r conserved waters: occupancy barplots, echo=TRUE, fig.retina=2, message=FALSE, warning=FALSE}
 OccupancyBarplot(data = thrombin10.conservedWaters, passed.waters = TRUE)
 ```
 
 - **Mobility Barplots**: The mobility -- calculated for each water in the analysis -- is a way to provide a single measure of a water's quality using the occupancy and B-value. Values closer to zero are considered ideal while waters with mobility values greater than 2.0 are often removed from analysis. The mobility plot below illustrates how the mobility and percent conservation are inversely related; highly conserved waters have low mean mobility values and the mean mobility values increase as percent conservation decreases.
 
-```{r conserved waters: mobility barplots, echo=TRUE, fig.retina=1, message=FALSE, warning=FALSE}
+```{r conserved waters: mobility barplots, echo=TRUE, fig.retina=2, message=FALSE, warning=FALSE}
 MobilityBarplot(data = thrombin10.conservedWaters, passed.waters = TRUE)
 ```
 
 - **B-value Barplots**: A B-value less than 40 is considered ideal while B-values between 60 and 100 indicate atoms with significant variance in their location. The B-value plot below demonstrates the inverse relationship between low B-value and highly conserved waters. None of the conserved waters -- those with 50\% or greater -- in this analysis have a B-value greater than 40.
 
-```{r conserved waters: experimental Bvalue barplots, echo=TRUE, fig.retina=1, message=FALSE, warning=FALSE}
+```{r conserved waters: experimental Bvalue barplots, echo=TRUE, fig.retina=2, message=FALSE, warning=FALSE}
 BvalueBarplot(data = thrombin10.conservedWaters, passed.waters = TRUE, calc.values = FALSE)
 ```
 
-```{r conserved waters: calculated Bvalue barplots, echo=TRUE, fig.retina=1, message=FALSE, warning=FALSE}
+```{r conserved waters: calculated Bvalue barplots, echo=TRUE, fig.retina=2, message=FALSE, warning=FALSE}
 BvalueBarplot(data = thrombin10.conservedWaters, passed.waters = TRUE, calc.values = TRUE)
 ```
 
 - **Normalized B-value Barplots**: The normalized B-values for this analysis range from approximately -2 to about 0.5 with highly conserved waters having a more negative value than less conserved waters; again an inverse relationship. Individual waters with a normalized B-value 1.0 or less are considered sound and included in the analysis.
 
-```{r conserved waters: nBvalue barplots, echo=TRUE, fig.retina=1, message=FALSE, warning=FALSE}
+```{r conserved waters: nBvalue barplots, echo=TRUE, fig.retina=2, message=FALSE, warning=FALSE}
 nBvalueBarplot(data = thrombin10.conservedWaters, passed.waters = TRUE)
 ```
 
@@ -349,7 +340,7 @@ nBvalueBarplot(data = thrombin10.conservedWaters, passed.waters = TRUE)
 
 The light-grey points in the second and third panels at the 0.0 Angstrom X-axis represents conserved water clusters with a single water. Overall, waters with a conservation value of 50\% or greater have a mean value distance between cluster waters less than approximately 1.25 Angstroms and less than 0.9 Angstroms between the waters and the cluster's centroid. The distances between waters -- and between the centriod -- is reduced as the amount of conservation increases. This indicates highly conserved water clusters have less positional variability compared to lesser conserved water clusters.
 
-```{r Mobility and Normalized B-values Evaluation Plots, echo=TRUE, fig.retina=1, message=FALSE, warning=FALSE}
+```{r Mobility and Normalized B-values Evaluation Plots, echo=TRUE, fig.retina=2, message=FALSE, warning=FALSE}
 MobNormBvalEvalPlots(data = thrombin10.conservedWaters, passed.waters = TRUE, 
                      title = "Mobility and Normalized B-value Evaluation")
 ```
@@ -363,14 +354,14 @@ MobNormBvalEvalPlots(data = thrombin10.conservedWaters, passed.waters = TRUE,
 
 All values are based on environment of each cluster's waters in their original protein structures. 
 
-```{r Bound Water Environment Barplots, echo=TRUE, fig.retina=1, message=FALSE, warning=FALSE}
+```{r Bound Water Environment Barplots, echo=TRUE, fig.retina=2, message=FALSE, warning=FALSE}
 BoundWaterEnvPlots(data = thrombin10.conservedWaters, passed.waters = TRUE, 
                    pct.conserved.gte = 50, num.clusters = 50)
 ```
 
 - **Bound Water Environment Summary Plot**: This plot is designed to illustrate how various features of the protein heavy atoms surrounding the conserved water cluster change as the percent conservation (precentage of protein structures contributing to the conserved water cluster) changes. The average and scaled values for neighboring protein and water atoms related to the conserved water clusters at each conservation percentage are plotted. Obvious trends include, the protein atomic density and potential hydrogen bonds between the protein and between waters increases with percent conservation indicating that highly conserved waters interact with the protein and other waters. There is an inverse relationship between the quality of protein and water heavy atoms within 3.6 Angstroms of a conserved cluster and the percent conservation. 
 
-```{r Bound Water Environment Summary Plot, echo=TRUE, fig.retina=1, message=FALSE, warning=FALSE}
+```{r Bound Water Environment Summary Plot, echo=TRUE, fig.retina=2, message=FALSE, warning=FALSE}
 BoundWaterEnvSummaryPlot(data = thrombin10.conservedWaters, passed.waters = TRUE, 
                          title = "Bound Water Environment per Conservation Percentage")
 ```
