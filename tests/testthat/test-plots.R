@@ -70,46 +70,46 @@ test_that("the Mobility Summary Barplots (initial structures) are the same", {
 
 
 ## ConservationPlot ------------------------------------------------------------
-test_that("the Conservation Plot is the same", {
-  expect_equal_to_reference(ConservationPlot(data=thrombin10.conservedWaters,
-                                             passed.waters=TRUE),
-                            file="plot-test_ConservationPlot.rds")
-})
+# test_that("the Conservation Plot is the same", {
+#   expect_equal_to_reference(ConservationPlot(data=thrombin10.conservedWaters,
+#                                              passed.waters=TRUE),
+#                             file="plot-test_ConservationPlot.rds")
+# })
 
 
 ## OccupancyBarplot ----------------------------------------------------------
-test_that("the Occupancy Barplot is the same", {
-  expect_equal_to_reference(OccupancyBarplot(data=thrombin10.conservedWaters,
-                                             passed.waters=TRUE),
-                            file="plot-test_OccupancyBarplot.rds")
-})
+# test_that("the Occupancy Barplot is the same", {
+#   expect_equal_to_reference(OccupancyBarplot(data=thrombin10.conservedWaters,
+#                                              passed.waters=TRUE),
+#                             file="plot-test_OccupancyBarplot.rds")
+# })
 
 
 ## MobilityBarplot -------------------------------------------------------------
-test_that("the Mobility Barplot is the same", {
-  expect_equal_to_reference(MobilityBarplot(data=thrombin10.conservedWaters,
-                                            passed.waters=TRUE),
-                            file="plot-test_MobilityBarplot.rds")
-})
+# test_that("the Mobility Barplot is the same", {
+#   expect_equal_to_reference(MobilityBarplot(data=thrombin10.conservedWaters,
+#                                             passed.waters=TRUE),
+#                             file="plot-test_MobilityBarplot.rds")
+# })
 
 
 ## BvalueBarplot ---------------------------------------------------------------
-test_that("the b-value Barplot is the same", {
-  expect_equal_to_reference(BvalueBarplot(data=thrombin10.conservedWaters,
-                                          passed.waters=TRUE, calc.values=TRUE),
-                            file="plot-test_BvalueBarplot_calcValuesTRUE.rds")
-  expect_equal_to_reference(BvalueBarplot(data=thrombin10.conservedWaters,
-                                          passed.waters=TRUE, calc.values=FALSE),
-                            file="plot-test_BvalueBarplot_calcValuesFALSE.rds")
-})
+# test_that("the b-value Barplot is the same", {
+#   expect_equal_to_reference(BvalueBarplot(data=thrombin10.conservedWaters,
+#                                           passed.waters=TRUE, calc.values=TRUE),
+#                             file="plot-test_BvalueBarplot_calcValuesTRUE.rds")
+#   expect_equal_to_reference(BvalueBarplot(data=thrombin10.conservedWaters,
+#                                           passed.waters=TRUE, calc.values=FALSE),
+#                             file="plot-test_BvalueBarplot_calcValuesFALSE.rds")
+# })
 
 
 ## nBvalueBarplot --------------------------------------------------------------
-test_that("the normalized b-value Barplot is the same", {
-  expect_equal_to_reference(nBvalueBarplot(data=thrombin10.conservedWaters,
-                                           passed.waters=TRUE),
-                            file="plot-test_nBvalueBarplot.rds")
-})
+# test_that("the normalized b-value Barplot is the same", {
+#   expect_equal_to_reference(nBvalueBarplot(data=thrombin10.conservedWaters,
+#                                            passed.waters=TRUE),
+#                             file="plot-test_nBvalueBarplot.rds")
+# })
 
 
 ## ClusterSummaryPlots ----------------------------------------------------------
