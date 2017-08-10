@@ -1,0 +1,12 @@
+---
+title: "vanddraabe Vignettes"
+author: "Emilio Xavier Esposito"
+date: '`r Sys.Date()`'
+output: rmarkdown::html_vignette
+vignette: |
+  %\VignetteIndexEntry{vanddraabe: Vignettes} 
+  %\VignetteEngine{knitr::rmarkdown} 
+  %\VignetteEncoding{UTF-8}
+---
+
+The first vignette for `vanddraabe` is available [here](). It demonstrates the steps and thought process to analyze the conserved waters of ten thrombin crystallographically determined structures and is based on the work of Sanschagrin and Kuhn (_Protein Science_, 1998, **7** (_10_), pp 2054-2064). The results presented herein are part of the original vanddraabe article.
