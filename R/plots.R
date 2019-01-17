@@ -17,6 +17,7 @@
 ## jul-31-2017 (exe) updated ClusterSummaryPlots() documentation
 ## aug-04-2017 (exe) added protein mobility to BoundWaterEnvSummaryPlot()
 ## aug-04-2017 (exe) removed protein hydrophilicity from BoundWaterEnvSummaryPlot()
+## jan-17-2019 (exe) updated BvalueBarplot.summ() to accomodate fringe values
 ##
 ## Please direct all questions to Emilio Xavier Esposito, PhD
 ## exeResearch LLC, East Lansing, Michigan 48823 USA
@@ -161,6 +162,12 @@ BvalueBarplot.summ <- function(data) {
   ##_ melt the data -----
   bvalue.summ.melt <- reshape2::melt(Bvalue.counts, id.var = "PDBid")
 
+  ##--- construct x-axis tick labels
+  x.axis.tick.labels <- c(-100, seq(from = 0, to = 100, by = 5), 200)
+  x.axis.tick.labels[1] <- expression(paste('\u2264', "0", sep = ""))
+  x.axis.tick.labels[length(x.axis.tick.labels)] <-
+    expression(paste('\u2265', "100", sep = ""))
+
   ##_ construct the plot -----
   bvalue.summ.plots <- ggplot2::ggplot(data=bvalue.summ.melt,
                                        aes_string(x = "variable", y = "value")) +
@@ -170,7 +177,7 @@ BvalueBarplot.summ <- function(data) {
     ggplot2::labs(title = "B-value Summary (Initial Structures)",
                   x = "B-values",
                   y = "Counts (log10)") +
-    ggplot2::scale_x_discrete(labels = seq(from = 0, to = 100, by = 5)) +
+    ggplot2::scale_x_discrete(labels = x.axis.tick.labels ) +
     ggplot2::theme(legend.position = "none",
                    axis.text.x = element_text(angle = 90, size = 10,
                                               hjust = 1, vjust = 0.5))
