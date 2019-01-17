@@ -22,6 +22,8 @@
 ## aug-08-2017 (exe) added min.num.h2o parameter and check to CleanProteinStructures()
 ## aug-08-2017 (exe) CleanProteinStructures() now also returns the PDBids.retained
 ## aug-10-2017 (exe) added @importFrom stats ...
+## jan-17-2019 (exe) expanded o.bins (-1,2), b.bins (-100,200), and mob.bins (-6,6) to
+##                   accomodate fringe values
 ##
 ## Please direct all questions to Emilio Xavier Esposito, PhD
 ## exeResearch LLC, East Lansing, Michigan 48823 USA
@@ -29,7 +31,7 @@
 ## emilio AT exeResearch DOT com
 ## emilio DOT esposito AT gmail DOT com
 ##
-## Copyright (c) 2017, Emilio Xavier Esposito
+## Copyright (c) 2019, Emilio Xavier Esposito
 ##
 ## Permission is hereby granted, free of charge, to any person obtaining
 ## a copy of this software and associated documentation files (the
@@ -436,7 +438,7 @@ CleanProteinStructures <- function(prefix="./alignTesting",
 
 
   ## SETUP BINNING FOR OCCUPANCY -----------------------------------------------
-  o.bins <- seq(from = 0, to = 1, by = 0.1)
+  o.bins <- c(-1, seq(from = 0, to = 1, by = 0.1), 2)
   # o.bins.colNames <- paste("o_", round(o.bins, digits = 1), sep = "")
   o.bins.results <- data.frame(
     matrix(rep(0, num.pdb.structures * length(o.bins) ),
@@ -445,7 +447,7 @@ CleanProteinStructures <- function(prefix="./alignTesting",
 
 
   ## SETUP BINNING FOR B-VALUES -----------------------------------------------
-  b.bins <- seq(from = 0, to = 100, by = 5)
+  b.bins <- c(-100, seq(from = 0, to = 100, by = 5), 200)
   # b.bins.colNames <- paste("B_", b.bins, sep = "")
   b.bins.results <- data.frame(
     matrix(rep(0, num.pdb.structures * length(b.bins) ),
@@ -454,7 +456,7 @@ CleanProteinStructures <- function(prefix="./alignTesting",
 
 
   ## SETUP BINNING FOR MOBILITY ------------------------------------------------
-  mob.bins <- seq(from = 0, to = 6, by = 0.1)
+  mob.bins <- c(-6, seq(from = 0, to = 6, by = 0.1))
   # mob.bins.colNames <- paste("mob_", round(mob.bins, digits = 1), sep = "")
   mob.bins.results <- data.frame(
     matrix(rep(0, num.pdb.structures * length(mob.bins) ),
@@ -589,6 +591,7 @@ CleanProteinStructures <- function(prefix="./alignTesting",
 
 
     ## REMOVE DISTANT WATER MOLECULES/OXYGEN ATOMS -----------------------------
+    num.atoms <- nrow(atoms.oi)
     ##----- determine the protein, hetatom, and  water indices
     prot.het.h2o.idc <- ProtHetWatIndices(data=atoms.oi)
     prot.idc <- prot.het.h2o.idc$prot.idc
@@ -618,7 +621,7 @@ CleanProteinStructures <- function(prefix="./alignTesting",
         c(num.h2o.idc.orig - length(h2o.idc), length(h2o.idc))
 
     }
-
+    num.atoms <- nrow(atoms.oi)
 
     ## WRITE CLEANED PDB TO FILE -----------------------------------------------
     filename.cleaned <- paste0(curr.pdb.id, "_cleaned.pdb")
