@@ -18,6 +18,8 @@
 ## aug-04-2017 (exe) added protein mobility to BoundWaterEnvSummaryPlot()
 ## aug-04-2017 (exe) removed protein hydrophilicity from BoundWaterEnvSummaryPlot()
 ## jan-17-2019 (exe) updated BvalueBarplot.summ() to accomodate fringe values
+## jan-17-2019 (exe) updated normBvalueBarplot.summ() to accomodate fringe values
+## jan-17-2019 (exe) updated OccupancyBarplot.summ() to accomodate fringe values
 ##
 ## Please direct all questions to Emilio Xavier Esposito, PhD
 ## exeResearch LLC, East Lansing, Michigan 48823 USA
@@ -25,7 +27,7 @@
 ## emilio AT exeResearch DOT com
 ## emilio DOT esposito AT gmail DOT com
 ##
-## Copyright (c) 2017, Emilio Xavier Esposito
+## Copyright (c) 2019, Emilio Xavier Esposito
 ##
 ## Permission is hereby granted, free of charge, to any person obtaining
 ## a copy of this software and associated documentation files (the
@@ -96,6 +98,12 @@ OccupancyBarplot.summ <- function(data) {
   ##_ melt the data -----
   occ.summ.melt <- reshape2::melt(occupancy.counts, id.var = "PDBid")
 
+  ##_ construct x-axis tick labels -----
+  x.axis.tick.labels <- c(-1, seq(from = 0, to = 1, by = 0.1), 2)
+  x.axis.tick.labels[1] <- expression(paste('\u003c', "0", sep = ""))
+  x.axis.tick.labels[length(x.axis.tick.labels)] <-
+    expression(paste('\u003e', "1", sep = ""))
+
   ##_ construct the plot -----
   occ.summ.plots <- ggplot2::ggplot(data = occ.summ.melt,
                                     aes_string(x = "variable", y = "value")) +
@@ -105,7 +113,7 @@ OccupancyBarplot.summ <- function(data) {
     ggplot2::labs(title = "Occupancy Summary (Initial Structures)",
                   x = "Occupancy Values",
                   y = "Counts (log10)") +
-    ggplot2::scale_x_discrete(labels = seq(from = 0, to = 1, by = 0.1)) +
+    ggplot2::scale_x_discrete(labels = x.axis.tick.labels) +
     ggplot2::theme(legend.position = "none",
                    axis.text.x = element_text(angle = 90,
                                               size = 10,
@@ -156,17 +164,17 @@ OccupancyBarplot.summ <- function(data) {
 #'
 BvalueBarplot.summ <- function(data) {
 
-  ##_ extract occupancy.counts from cleaning results -----
+  ##_ extract Bvalue.counts from cleaning results -----
   Bvalue.counts <- data$Bvalue.counts
 
   ##_ melt the data -----
   bvalue.summ.melt <- reshape2::melt(Bvalue.counts, id.var = "PDBid")
 
-  ##--- construct x-axis tick labels
+  ##_ construct x-axis tick labels -----
   x.axis.tick.labels <- c(-100, seq(from = 0, to = 100, by = 5), 200)
-  x.axis.tick.labels[1] <- expression(paste('\u2264', "0", sep = ""))
+  x.axis.tick.labels[1] <- expression(paste('\u003c', "0", sep = ""))
   x.axis.tick.labels[length(x.axis.tick.labels)] <-
-    expression(paste('\u2265', "100", sep = ""))
+    expression(paste('\u003e', "100", sep = ""))
 
   ##_ construct the plot -----
   bvalue.summ.plots <- ggplot2::ggplot(data=bvalue.summ.melt,
