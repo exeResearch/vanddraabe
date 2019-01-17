@@ -77,7 +77,7 @@
 #'   value is 2.0. See [Mobility()] for more information.
 #' @param nBvalue The number of standard deviations from the mean for the water
 #'   oxygens' B-values within the structure of interest; numeric. Calculated
-#'   mobility values equal to or greater than the provided value will be removed
+#'   normalized B-values equal to or greater than the provided value will be removed
 #'   from analysis. Default value is 1.0. See [NormalizedBvalue()] for
 #'   more information.
 #' @param chain The chain to examine. The user can define "first" and the first
