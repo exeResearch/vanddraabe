@@ -1,6 +1,6 @@
 Package: vanddraabe
 Type: Package
-Title: Identification and Statistical Analysis of Conserved Waters in Proteins
+Title: Identification and Statistical Analysis of Conserved Waters Near Proteins
 Description: Identify and analyze conserved waters within crystallographic 
   protein structures and molecular dynamics simulation trajectories. Statistical 
   parameters for each water cluster, informative graphs, and a PyMOL session 
@@ -9,18 +9,18 @@ Description: Identify and analyze conserved waters within crystallographic
   atoms and is related to conserved waters. An informatics derived set of 
   hydrophilicity values are provided based on a large, high-quality X-ray 
   protein structure dataset.
-Version: 1.0.0
-Date: 2017-08-10
+Version: 1.1.0
+Date: 2019-01-17
 Depends:
-  R (>= 3.3.3)
+  R (>= 3.5.2)
 Imports:
-  bio3d (>= 2.3-1),
-  cowplot (>= 0.7.0),
-  fastcluster (>= 1.1.22),
-  ggplot2 (>= 2.2.1),
-  openxlsx (>= 4.0.17),
-  reshape2 (>= 1.4.2),
-  scales (>= 0.4.1)
+  bio3d (>= 2.3-4),
+  cowplot (>= 0.9.3),
+  fastcluster (>= 1.1.25),
+  ggplot2 (>= 3.0.0),
+  openxlsx (>= 4.1.0),
+  reshape2 (>= 1.4.3),
+  scales (>= 1.0.0)
 Suggests: 
   knitr,
   rmarkdown,
