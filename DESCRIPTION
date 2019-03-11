@@ -10,7 +10,7 @@ Description: Identify and analyze conserved waters within crystallographic
   hydrophilicity values are provided based on a large, high-quality X-ray 
   protein structure dataset.
 Version: 1.1.0
-Date: 2019-01-17
+Date: 2019-03-11
 Depends:
   R (>= 3.5.2)
 Imports:

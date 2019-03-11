@@ -19,6 +19,7 @@
 ## jul-25-2017 (exe) updated documentation
 ## jul-28-2017 (exe) updated write.conservedWaters.pdb documentation
 ## jul-31-2017 (exe) updated FileTimeStamp() and ExtractFileTimeStamp() documentation
+## mar-11-2019 (exe) added suppressWarnings(RNGversion("3.5.0")) prior to set.seed()
 ##
 ## Please direct all questions to Emilio Xavier Esposito, PhD
 ## exeResearch LLC, East Lansing, Michigan 48823 USA
@@ -26,7 +27,7 @@
 ## emilio AT exeResearch DOT com
 ## emilio DOT esposito AT gmail DOT com
 ##
-## Copyright (c) 2017, Emilio Xavier Esposito
+## Copyright (c) 2019, Emilio Xavier Esposito
 ##
 ## Permission is hereby granted, free of charge, to any person obtaining
 ## a copy of this software and associated documentation files (the
@@ -501,6 +502,7 @@ FileTimeStamp <- function(current.time) {
 #'
 #' @examples
 #'   \dontrun{
+#'   suppressWarnings(RNGversion("3.5.0"))
 #'   set.seed(13)
 #'   num.AtomTypes <- sample(1:10, 30, replace = TRUE)
 #'   atom.types <- rep(sample(names.res.AtomTypes, 30), num.AtomTypes)

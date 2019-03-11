@@ -7,6 +7,7 @@
 ## apr-26-2017 (exe) added BoundWaterEnvironment.quality() test
 ## jul-25-2017 (exe) updated documentation
 ## jul-31-2017 (exe) added calcBvalue() test
+## mar-11-2019 (exe) added suppressWarnings(RNGversion("3.5.0")) prior to set.seed()
 ##
 ## Please direct all questions to Emilio Xavier Esposito, PhD
 ## exeResearch LLC, East Lansing, Michigan 48823 USA
@@ -14,7 +15,7 @@
 ## emilio AT exeResearch DOT com
 ## emilio DOT esposito AT gmail DOT com
 ##
-## Copyright (c) 2017, Emilio Xavier Esposito
+## Copyright (c) 2019, Emilio Xavier Esposito
 ##
 ## Permission is hereby granted, free of charge, to any person obtaining
 ## a copy of this software and associated documentation files (the
@@ -61,6 +62,7 @@ test_that("the correct normalized Bvalues are returned", {
 ## Mobility --------------------------------------------------------------------
 test_that("the correct mobility values are returned", {
   Bvalues <- seq(from=10, to=75, by=5)
+  suppressWarnings(RNGversion("3.5.0"))
   set.seed(13)
   occupancy <- sample(c(0.90, 0.95, 1.0), 14, replace = TRUE)
   mobility.answer <- c(0.225210084,  0.3753501401, 0.4741264927,
