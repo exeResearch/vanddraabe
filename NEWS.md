@@ -1,4 +1,10 @@
 
+# vanddraabe 1.1.1
+
+* Documentation
+  + updated results of `sample()` dependent examples due to the new implementation (version 3.6.0 forward)
+* Version 1.1.1
+
 # vanddraabe 1.1.0
 
 * Bug fixes

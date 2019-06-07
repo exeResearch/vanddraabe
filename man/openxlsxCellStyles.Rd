@@ -45,3 +45,4 @@ Other "openxlsx functions": \code{\link{oxAlignOverlapSheet}},
 \author{
 Emilio Xavier Esposito \email{emilio@exeResearch.com}
 }
+\concept{"openxlsx functions"}

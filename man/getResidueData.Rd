@@ -58,3 +58,4 @@ Other "Hydrophilicity Evaluation" "Bound Water Environment": \code{\link{Hydroph
 \author{
 Emilio Xavier Esposito \email{emilio@exeResearch.com}
 }
+\concept{"Hydrophilicity Evaluation" "Bound Water Environment"}

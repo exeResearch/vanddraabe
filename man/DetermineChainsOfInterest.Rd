@@ -72,3 +72,4 @@ Other utilities: \code{\link{ConservationSet}},
 \author{
 Emilio Xavier Esposito \email{emilio@exeResearch.com}
 }
+\concept{utilities}

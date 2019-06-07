@@ -4,7 +4,8 @@
 \alias{oxWaterOccurrenceSheet}
 \title{openxlsx Water Occurrence Summary}
 \usage{
-oxWaterOccurrenceSheet(wb.name, sheet.name = "WaterOccurrenceSummary", df)
+oxWaterOccurrenceSheet(wb.name, sheet.name = "WaterOccurrenceSummary",
+  df)
 }
 \arguments{
 \item{wb.name}{Name of the workbook for the results; \emph{e.g.}, results.wb}
@@ -43,3 +44,4 @@ Other "openxlsx functions": \code{\link{openxlsxCellStyles}},
 \author{
 Emilio Xavier Esposito \email{emilio@exeResearch.com}
 }
+\concept{"openxlsx functions"}

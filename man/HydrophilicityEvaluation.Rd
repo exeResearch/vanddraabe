@@ -4,9 +4,9 @@
 \alias{HydrophilicityEvaluation}
 \title{Hydrophilicity Evaluation}
 \usage{
-HydrophilicityEvaluation(prefix = "alignTesting/", h2o.prot.dist.max = 6,
-  bound.h2o.dist.max = 4, min.num.h2o = 20, probeRadius = 1.4,
-  dataset = "top56")
+HydrophilicityEvaluation(prefix = "alignTesting/",
+  h2o.prot.dist.max = 6, bound.h2o.dist.max = 4, min.num.h2o = 20,
+  probeRadius = 1.4, dataset = "top56")
 }
 \arguments{
 \item{prefix}{The directory containing the protein structures; \emph{e.g.},
@@ -134,3 +134,4 @@ Other "Hydrophilicity Evaluation" "Bound Water Environment": \code{\link{calcAto
 \author{
 Emilio Xavier Esposito \email{emilio@exeResearch.com}
 }
+\concept{"Hydrophilicity Evaluation" "Bound Water Environment"}

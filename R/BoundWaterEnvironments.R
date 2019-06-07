@@ -16,6 +16,7 @@
 ##                   changed Bvalue parameter to Bvalues to match code
 ## jul-31-2017 (exe) added calcBvalue() example
 ## aug-10-2017 (exe) added @importFrom stats ... and utils ...
+## jun-06-2019 (exe) updated results of output impacted by the change to sample() in 3.6.0
 ##
 ## Please direct all questions to Emilio Xavier Esposito, PhD
 ## exeResearch LLC, East Lansing, Michigan 48823 USA
@@ -67,11 +68,11 @@
 #'   set.seed(13)
 #'   Bvalues <- sample(thrombin.1hai$atom$b, 10)
 #'   Bvalues
-#'   # [1] 32.53 22.36 24.91 42.11 36.60
-#'   #     54.66 37.71 14.93 27.65 17.84
+#'   # [1] 45.73 45.40 20.24 39.30 35.53
+#'   #     22.16 35.81 15.35 22.73 21.34
 #'   NormalizedBvalue(Bvalues)
-#'   # [1]  0.1158 -0.7252 -0.5143  0.9080  0.4523
-#'   #      1.9457  0.5441 -1.3396 -0.2878 -1.0990
+#'   # [1]  1.3698  1.3404 -0.9017  0.7968  0.4608
+#'   #     -0.7306  0.4858 -1.3375 -0.6798 -0.8037
 #'
 #' @export
 #'
@@ -132,15 +133,15 @@ NormalizedBvalue <- function (Bvalues) {
 #'   sample.idc <- sample(1:nrow(thrombin.1hai$atom), 10)
 #'   Bvalues <- thrombin.1hai$atom[sample.idc, "b"]
 #'   Bvalues
-#'   # [1] 32.53 22.36 24.91 42.11 36.60
-#'   #     54.66 37.71 14.93 27.65 17.84
+#'   # [1] 45.73 45.40 20.24 39.30 35.53
+#'   #     22.16 35.81 15.35 22.73 21.34
 #'   occupancy <- thrombin.1hai$atom[sample.idc, "o"]
 #'   occupancy
-#'   # [1] 1.00 1.00 1.00 1.00 0.79
+#'   # [1] 0.01 1.00 1.00 1.00 1.00
 #'   #     1.00 1.00 1.00 1.00 1.00
 #'   Mobility(Bvalues, occupancy)
-#'   # [1] 1.0230 0.7032 0.7834 1.3243 1.4570
-#'   #     1.7190 1.1859 0.4695 0.8696 0.5610
+#'   # [1] 135.7183 1.3474 0.6007 1.1664 1.0545
+#'   #       0.6577 1.0628 0.4556 0.6746 0.6333
 #'
 #' @export
 #'

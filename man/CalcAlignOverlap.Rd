@@ -50,3 +50,4 @@ Other "Alignment Overlap": \code{\link{AlignOverlap}}
 \author{
 Emilio Xavier Esposito \email{emilio@exeResearch.com}
 }
+\concept{"Alignment Overlap"}

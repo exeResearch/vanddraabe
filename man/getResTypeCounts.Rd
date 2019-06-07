@@ -32,7 +32,7 @@ removed, the ResType are counted, and the counts are ordered based on the
   num.ResTypes <- sample(1:10, 20, replace = TRUE)
   res.types <- rep(names.residues, num.ResTypes)
   getResTypeCounts(res.types)
-  # [1] 8  3  4  1 10  1  6  8  9  1  7  9  9  6  6  4  4  6  9  7
+  # [1] 8  3  5 10  6  6  4  8  3  1 10  7  7  5  1  6  8  1  1  4
   }
 
 }
@@ -61,3 +61,4 @@ Other utilities: \code{\link{ConservationSet}},
 \author{
 Emilio Xavier Esposito \email{emilio@exeResearch.com}
 }
+\concept{utilities}

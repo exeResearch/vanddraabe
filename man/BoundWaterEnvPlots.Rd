@@ -78,3 +78,4 @@ Other plots: \code{\link{BoundWaterEnvSummaryPlot}},
 \author{
 Emilio Xavier Esposito \email{emilio@exeResearch.com}
 }
+\concept{plots}

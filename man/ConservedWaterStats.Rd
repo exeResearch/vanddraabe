@@ -51,3 +51,4 @@ Other "vanddraabe utilities": \code{\link{FreeSASAcheck}}
 \author{
 Emilio Xavier Esposito \email{emilio@exeResearch.com}
 }
+\concept{"vanddraabe utilities"}

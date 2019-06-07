@@ -9,15 +9,15 @@ Description: Identify and analyze conserved waters within crystallographic
   atoms and is related to conserved waters. An informatics derived set of 
   hydrophilicity values are provided based on a large, high-quality X-ray 
   protein structure dataset.
-Version: 1.1.0
-Date: 2019-03-11
+Version: 1.1.1
+Date: 2019-06-10
 Depends:
-  R (>= 3.5.2)
+  R (>= 3.6.0)
 Imports:
   bio3d (>= 2.3-4),
-  cowplot (>= 0.9.3),
+  cowplot (>= 0.9.4),
   fastcluster (>= 1.1.25),
-  ggplot2 (>= 3.0.0),
+  ggplot2 (>= 3.1.1),
   openxlsx (>= 4.1.0),
   reshape2 (>= 1.4.3),
   scales (>= 1.0.0)
@@ -26,11 +26,11 @@ Suggests:
   rmarkdown,
   testthat
 Authors@R: person("Emilio Xavier", "Esposito", email = "emilio@exeResearch.com", role = c("aut", "cre"))
-URL: http://www.exeResearch.com/vanddraabe.html, https://github.com/exeResearch/vanddraabe/
+URL: http://vanddraabe.com, https://github.com/exeResearch/vanddraabe/
 BugReports: https://github.com/exeResearch/vanddraabe/issues
 License: MIT + file LICENSE
 LazyData: TRUE
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr
 Encoding: UTF-8

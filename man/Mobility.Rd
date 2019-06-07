@@ -43,15 +43,15 @@ The mobility exclusion value is user defined within the main
   sample.idc <- sample(1:nrow(thrombin.1hai$atom), 10)
   Bvalues <- thrombin.1hai$atom[sample.idc, "b"]
   Bvalues
-  # [1] 32.53 22.36 24.91 42.11 36.60
-  #     54.66 37.71 14.93 27.65 17.84
+  # [1] 45.73 45.40 20.24 39.30 35.53
+  #     22.16 35.81 15.35 22.73 21.34
   occupancy <- thrombin.1hai$atom[sample.idc, "o"]
   occupancy
-  # [1] 1.00 1.00 1.00 1.00 0.79
+  # [1] 0.01 1.00 1.00 1.00 1.00
   #     1.00 1.00 1.00 1.00 1.00
   Mobility(Bvalues, occupancy)
-  # [1] 1.0230 0.7032 0.7834 1.3243 1.4570
-  #     1.7190 1.1859 0.4695 0.8696 0.5610
+  # [1] 135.7183 1.3474 0.6007 1.1664 1.0545
+  #       0.6577 1.0628 0.4556 0.6746 0.6333
 
 }
 \references{
@@ -74,3 +74,4 @@ Other "Bound Water Environment": \code{\link{BoundWaterEnvironment.interact}},
 \author{
 Emilio Xavier Esposito \email{emilio@exeResearch.com}
 }
+\concept{"Bound Water Environment"}

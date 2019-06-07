@@ -4,9 +4,9 @@
 \alias{ConservedWaters}
 \title{Conserved Crystallographic Waters}
 \usage{
-ConservedWaters(prefix = "", cluster = 2.4, mobility = 2, nBvalue = 1,
-  chain = "first", prot.h2o.dist.min = 5.1, cluster.method = "complete",
-  PDBinfo, filename = "ProteinSystem")
+ConservedWaters(prefix = "", cluster = 2.4, mobility = 2,
+  nBvalue = 1, chain = "first", prot.h2o.dist.min = 5.1,
+  cluster.method = "complete", PDBinfo, filename = "ProteinSystem")
 }
 \arguments{
 \item{prefix}{Directory of aligned structures; string.}
@@ -21,7 +21,7 @@ value is 2.0. See \code{\link[=Mobility]{Mobility()}} for more information.}
 
 \item{nBvalue}{The number of standard deviations from the mean for the water
 oxygens' B-values within the structure of interest; numeric. Calculated
-mobility values equal to or greater than the provided value will be removed
+normalized B-values equal to or greater than the provided value will be removed
 from analysis. Default value is 1.0. See \code{\link[=NormalizedBvalue]{NormalizedBvalue()}} for
 more information.}
 

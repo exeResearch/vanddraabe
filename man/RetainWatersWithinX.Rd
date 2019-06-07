@@ -54,3 +54,4 @@ Other "Clean Protein Structure": \code{\link{CleanProteinStructures}},
 \author{
 Emilio Xavier Esposito \email{emilio@exeResearch.com}
 }
+\concept{"Clean Protein Structure"}

@@ -52,3 +52,4 @@ Other "openxlsx functions": \code{\link{openxlsxCellStyles}},
 \author{
 Emilio Xavier Esposito \email{emilio@exeResearch.com}
 }
+\concept{"openxlsx functions"}

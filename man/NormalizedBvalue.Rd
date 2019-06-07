@@ -28,11 +28,11 @@ The B-value normalization exclusion value is user defined within the main
   set.seed(13)
   Bvalues <- sample(thrombin.1hai$atom$b, 10)
   Bvalues
-  # [1] 32.53 22.36 24.91 42.11 36.60
-  #     54.66 37.71 14.93 27.65 17.84
+  # [1] 45.73 45.40 20.24 39.30 35.53
+  #     22.16 35.81 15.35 22.73 21.34
   NormalizedBvalue(Bvalues)
-  # [1]  0.1158 -0.7252 -0.5143  0.9080  0.4523
-  #      1.9457  0.5441 -1.3396 -0.2878 -1.0990
+  # [1]  1.3698  1.3404 -0.9017  0.7968  0.4608
+  #     -0.7306  0.4858 -1.3375 -0.6798 -0.8037
 
 }
 \references{
@@ -53,3 +53,4 @@ Other "Bound Water Environment": \code{\link{BoundWaterEnvironment.interact}},
 \author{
 Emilio Xavier Esposito \email{emilio@exeResearch.com}
 }
+\concept{"Bound Water Environment"}

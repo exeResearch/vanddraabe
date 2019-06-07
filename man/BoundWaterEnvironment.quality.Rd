@@ -4,7 +4,8 @@
 \alias{BoundWaterEnvironment.quality}
 \title{Bound Water Environment (atomic quality)}
 \usage{
-BoundWaterEnvironment.quality(distances, set.oi.idc, structure, radius = 3.6)
+BoundWaterEnvironment.quality(distances, set.oi.idc, structure,
+  radius = 3.6)
 }
 \arguments{
 \item{distances}{Matrix of atomic pairwise distances}
@@ -90,3 +91,4 @@ Other "Bound Water Environment": \code{\link{BoundWaterEnvironment.interact}},
 \author{
 Emilio Xavier Esposito \email{emilio@exeResearch.com}
 }
+\concept{"Bound Water Environment"}

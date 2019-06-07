@@ -26,7 +26,7 @@ have an occupancy value of 0.01 or less and are identified and removed.
 
 The reported occupancy value of 0.01 is used as the cutoff because several
 PDB structures have comments in the \code{REMARK 3} section stating,
-\code{"...MISSING ABOVE 1SIGMA WERE GIVEN A 0.01 OCCUPANCY..."`` or}"...WITH NO DENSITIES ARE GIVEN OCCUPANCY VALUES OF 0.01..."`.
+\code{"...MISSING ABOVE 1SIGMA WERE GIVEN A 0.01 OCCUPANCY..."`` or }"...WITH NO DENSITIES ARE GIVEN OCCUPANCY VALUES OF 0.01..."`.
 }
 \examples{
   \donttest{
@@ -43,3 +43,4 @@ Other "Clean Protein Structure": \code{\link{CleanProteinStructures}},
 \author{
 Emilio Xavier Esposito \email{emilio@exeResearch.com}
 }
+\concept{"Clean Protein Structure"}

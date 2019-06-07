@@ -104,3 +104,4 @@ Other "Bound Water Environment": \code{\link{BoundWaterEnvironment.quality}},
 \author{
 Emilio Xavier Esposito \email{emilio@exeResearch.com}
 }
+\concept{"Bound Water Environment"}

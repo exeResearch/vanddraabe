@@ -108,12 +108,8 @@ accessible surface area calculations [version 1; referees: 2 approved].
 \href{http://doi.org/10.12688/f1000research.7931.1}{DOI: 10.12688/f1000research.7931.1}
 \href{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4776673/}{PMCID: PMC4776673}
 \href{http://freesasa.github.io}{FreeSASA}
-
-[version 1; referees: 2 approved]: R:version%201;%20referees:%202%20approved%5C
-[DOI: 10.12688/f1000research.7931.1]: R:DOI:%2010.12688/f1000research.7931.1
-[PMCID: PMC4776673]: R:PMCID:%20PMC4776673
-[FreeSASA]: R:FreeSASA
 }
 \author{
 Emilio Xavier Esposito \email{emilio@exeResearch.com}
 }
+\concept{"Hydrophilicity Evaluation"}

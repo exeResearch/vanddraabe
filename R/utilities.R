@@ -20,6 +20,9 @@
 ## jul-28-2017 (exe) updated write.conservedWaters.pdb documentation
 ## jul-31-2017 (exe) updated FileTimeStamp() and ExtractFileTimeStamp() documentation
 ## mar-11-2019 (exe) added suppressWarnings(RNGversion("3.5.0")) prior to set.seed()
+## jun-06-2019 (exe) updated results of output impacted by the change to sample() in 3.6.0
+## jun-06-2019 (exe) moved "return(ATclass)" outside of if statements in resAtomType2AtomClass()
+## jun-06-2019 (exe) updated resAtomType2AtomClass() if statement logic
 ##
 ## Please direct all questions to Emilio Xavier Esposito, PhD
 ## exeResearch LLC, East Lansing, Michigan 48823 USA
@@ -502,17 +505,19 @@ FileTimeStamp <- function(current.time) {
 #'
 #' @examples
 #'   \dontrun{
-#'   suppressWarnings(RNGversion("3.5.0"))
 #'   set.seed(13)
 #'   num.AtomTypes <- sample(1:10, 30, replace = TRUE)
 #'   atom.types <- rep(sample(names.res.AtomTypes, 30), num.AtomTypes)
 #'   getAtomTypeCounts(atom.types)
-#'   # [1]  0 0 0 1 0 0 0 0 8 0 7 0 0 1 0 0 0 1 0 0 1 0 4 0 0 0 0 0 0 0 0 0 4
-#'   #      0 0 9 0 0 0 0 0 0 0 0 0 0 0 5 0 6 0 0 0 0 0 0 0 0 6 0 0 0 0 0 7 0
-#'   #      0 3 0 0 8 0 0 6 0 0 0 0 0 0 0 0 2 0 0 0 0 0 10 0 0 0 0 6 7 0 0 6
-#'   #      0 0 7 0 0 0 0 0 0 0 0 9 0 0 0 0 0 0 0 0 0 0 9 0 0 0 0 0 0 0 0 0 0
-#'   #      0 1 0 0 0 0 0 0 4 0 0 0 6 0 0 0 0 0 9 0 4 0 0 0 0 0 7 0 0 0 0 0 0
-#'   #      0 0 0
+#'   # [1]  0  0  0  0  0  0  0  0  0  0  0  0  0  7  1  0  0  0  0
+#'   #      0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0
+#'   #      0  0  0  4  0  0  0  0  4  3  6  0  0  0  0  0  0  0  0
+#'   #      0  0 10  0  8  0  0  0  0  0  0  0  0  0  0  0  0  0  6
+#'   #      4  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+#'   #      0  5  0  0  0  0  0  0  0  7  0  0  0  0  0  0  0  7  0
+#'   #      3  0  0  5  3  0  5  0  0  5  8  0  8  0  8  0  0  0  0
+#'   #      0  0  2  0  0  1  0  0  0  3  0  0  6  0  0  0  0  0  3
+#'   #      0  0  0  0 10  0  0  0  0  0  0  1  0  0  0
 #'   }
 #'
 #' @author Emilio Xavier Esposito \email{emilio@@exeResearch.com}
@@ -566,7 +571,7 @@ getAtomTypeCounts <- function(atom.types) {
 #'   num.ResTypes <- sample(1:10, 20, replace = TRUE)
 #'   res.types <- rep(names.residues, num.ResTypes)
 #'   getResTypeCounts(res.types)
-#'   # [1] 8  3  4  1 10  1  6  8  9  1  7  9  9  6  6  4  4  6  9  7
+#'   # [1] 8  3  5 10  6  6  4  8  3  1 10  7  7  5  1  6  8  1  1  4
 #'   }
 #'
 #' @author Emilio Xavier Esposito \email{emilio@@exeResearch.com}
@@ -909,53 +914,35 @@ resAtomType2AtomClass <- function(resAT) {
 
   ##----- nitrogen atom classes
   if ( AtomType.element == "N") {
-    ##--- nitrogen neutral
-    if ( any(resAT %in% names.resATs.nitro.neut)  ||
-         (residue.AtomType == "UNK") ) {
-      ATclass <- "Nitrogen"
-    }
-
-    ##--- nitrogen positive
     if ( any(resAT %in% names.resATs.nitro.pos) ) {
       ATclass <- "Nitrogen (+)"
+    } else {
+      ATclass <- "Nitrogen"
     }
-
-    ##--- return AtomType Class
-    return(ATclass)
   }
 
   ##----- oxygen atom classes
   if ( AtomType.element == "O") {
     ##--- oxygen neutral
-    if ( any(resAT %in% names.resATs.oxy.neut) ||
-         (residue.AtomType == "UNK") ) {
-      ATclass <- "Oxygen"
-    }
-
-    ##--- oxygen negative
     if ( any(resAT %in% names.resATs.oxy.neg) ) {
       ATclass <- "Oxygen (-)"
+    } else {
+      ATclass <- "Oxygen"
     }
-
-    ##--- return AtomType Class
-    return(ATclass)
   }
 
   ##----- carbon atoms
   if ( AtomType.element == "C" ) {
     ATclass <- "Carbon"
-
-    ##--- return AtomType Class
-    return(ATclass)
   }
 
   ##----- carbon atoms
   if ( AtomType.element == "S" ) {
     ATclass <- "Sulfur"
-
-    ##--- return AtomType Class
-    return(ATclass)
   }
+
+  ##--- return AtomType Class
+  return(ATclass)
 
 }
 

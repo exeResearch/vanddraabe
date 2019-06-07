@@ -39,4 +39,5 @@ Other constants: \code{\link{names.backbone.atoms}},
 \author{
 Emilio Xavier Esposito \email{emilio@exeResearch.com}
 }
+\concept{constants}
 \keyword{datasets}

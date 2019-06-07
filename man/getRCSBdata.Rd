@@ -58,3 +58,4 @@ The B-value normalization exclusion value is user defined within the main
 \author{
 Emilio Xavier Esposito \email{emilio@exeResearch.com}
 }
+\concept{Clean RCSB dataset}

@@ -32,12 +32,15 @@ counts are ordered based on the \code{names.AtomTypes} constant.
   num.AtomTypes <- sample(1:10, 30, replace = TRUE)
   atom.types <- rep(sample(names.res.AtomTypes, 30), num.AtomTypes)
   getAtomTypeCounts(atom.types)
-  # [1]  0 0 0 1 0 0 0 0 8 0 7 0 0 1 0 0 0 1 0 0 1 0 4 0 0 0 0 0 0 0 0 0 4
-  #      0 0 9 0 0 0 0 0 0 0 0 0 0 0 5 0 6 0 0 0 0 0 0 0 0 6 0 0 0 0 0 7 0
-  #      0 3 0 0 8 0 0 6 0 0 0 0 0 0 0 0 2 0 0 0 0 0 10 0 0 0 0 6 7 0 0 6
-  #      0 0 7 0 0 0 0 0 0 0 0 9 0 0 0 0 0 0 0 0 0 0 9 0 0 0 0 0 0 0 0 0 0
-  #      0 1 0 0 0 0 0 0 4 0 0 0 6 0 0 0 0 0 9 0 4 0 0 0 0 0 7 0 0 0 0 0 0
-  #      0 0 0
+  # [1]  0  0  0  0  0  0  0  0  0  0  0  0  0  7  1  0  0  0  0
+  #      0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0
+  #      0  0  0  4  0  0  0  0  4  3  6  0  0  0  0  0  0  0  0
+  #      0  0 10  0  8  0  0  0  0  0  0  0  0  0  0  0  0  0  6
+  #      4  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+  #      0  5  0  0  0  0  0  0  0  7  0  0  0  0  0  0  0  7  0
+  #      3  0  0  5  3  0  5  0  0  5  8  0  8  0  8  0  0  0  0
+  #      0  0  2  0  0  1  0  0  0  3  0  0  6  0  0  0  0  0  3
+  #      0  0  0  0 10  0  0  0  0  0  0  1  0  0  0
   }
 
 }
@@ -66,3 +69,4 @@ Other utilities: \code{\link{ConservationSet}},
 \author{
 Emilio Xavier Esposito \email{emilio@exeResearch.com}
 }
+\concept{utilities}

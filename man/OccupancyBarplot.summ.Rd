@@ -50,3 +50,4 @@ Other plots: \code{\link{BoundWaterEnvPlots}},
 \author{
 Emilio Xavier Esposito \email{emilio@exeResearch.com}
 }
+\concept{plots}

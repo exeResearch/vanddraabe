@@ -73,3 +73,4 @@ Other "Alignment Overlap": \code{\link{CalcAlignOverlap}}
 \author{
 Emilio Xavier Esposito \email{emilio@exeResearch.com}
 }
+\concept{"Alignment Overlap"}

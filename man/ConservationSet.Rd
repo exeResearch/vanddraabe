@@ -60,3 +60,4 @@ Other utilities: \code{\link{DetermineChainsOfInterest}},
 \author{
 Emilio Xavier Esposito \email{emilio@exeResearch.com}
 }
+\concept{utilities}

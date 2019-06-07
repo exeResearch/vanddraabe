@@ -9,7 +9,7 @@ Thrombin10 vignette's primary sequence alignment.
 \details{
 The primary sequence alignment is being provided because the CRAN
 servers where R packages are tested does not have the MUltiple Sequence
-Comparison by Log-Expectation (MUSCLE; \href{http://www.drive5.com/muscle/}{MUSCLEwebpage} and the \href{http://www.ebi.ac.uk/Tools/msa/muscle/}{EBIwebpage} application installed.
+Comparison by Log-Expectation (MUSCLE; \href{http://www.drive5.com/muscle/}{MUSCLE webpage} and the \href{http://www.ebi.ac.uk/Tools/msa/muscle/}{EBI webpage} application installed.
 This alignment of 10 thrombin structures for the Thrombin 10 Vignette
 allows the vignette to be completed without errors.
 }

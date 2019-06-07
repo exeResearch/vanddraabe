@@ -4,8 +4,9 @@
 \alias{CleanProteinStructures}
 \title{Clean Protein Structures}
 \usage{
-CleanProteinStructures(prefix = "./alignTesting", CleanHydrogenAtoms = TRUE,
-  CleanModeledAtoms = TRUE, cutoff.prot.h2o.dist = 6, min.num.h2o = 20,
+CleanProteinStructures(prefix = "./alignTesting",
+  CleanHydrogenAtoms = TRUE, CleanModeledAtoms = TRUE,
+  cutoff.prot.h2o.dist = 6, min.num.h2o = 20,
   cleanDir = "ProteinSystem", filename = "ProteinSystem")
 }
 \arguments{
@@ -98,3 +99,4 @@ Other "Clean Protein Structure": \code{\link{RemoveHydrogenAtoms}},
 \author{
 Emilio Xavier Esposito \email{emilio@exeResearch.com}
 }
+\concept{"Clean Protein Structure"}

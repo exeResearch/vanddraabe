@@ -8,6 +8,7 @@
 ## jul-25-2017 (exe) updated documentation
 ## jul-31-2017 (exe) added calcBvalue() test
 ## mar-11-2019 (exe) added suppressWarnings(RNGversion("3.5.0")) prior to set.seed()
+## jun-06-2019 (exe) updated results of output impacted by the change to sample() in 3.6.0
 ##
 ## Please direct all questions to Emilio Xavier Esposito, PhD
 ## exeResearch LLC, East Lansing, Michigan 48823 USA
@@ -47,6 +48,7 @@ load(file="vanddraabe_DataForTesting.rda")
 
 
 ## NormalizedBvalue ------------------------------------------------------------
+# options(digits=10)
 test_that("the correct normalized Bvalues are returned", {
   Bvalues <- seq(from = 10, to = 75, by = 5)
   ## formatC(NormalizedBvalue(seq(from = 10, to = 75, by = 5)), digits = 10)
@@ -62,14 +64,17 @@ test_that("the correct normalized Bvalues are returned", {
 ## Mobility --------------------------------------------------------------------
 test_that("the correct mobility values are returned", {
   Bvalues <- seq(from=10, to=75, by=5)
-  suppressWarnings(RNGversion("3.5.0"))
   set.seed(13)
   occupancy <- sample(c(0.90, 0.95, 1.0), 14, replace = TRUE)
-  mobility.answer <- c(0.225210084,  0.3753501401, 0.4741264927,
-                       0.6255835668, 0.6756302521, 0.8758169935,
-                       0.9482529854, 1.013445378, 1.12605042,
-                       1.376283847,  1.422379478, 1.463865546,
-                       1.576470588,  1.777974348)
+  # occupancy --> 1.00 0.90 0.95 0.90 0.95 0.95 0.90 1.00 0.90 0.95 1.00 1.00 1.00 0.90
+  # to get the mobility.answer values
+  #  options(digits=10)
+  #  Mobility(Bvalues, occupancy) %>% round(digits=10) %>%  paste(collapse=", ")
+  mobility.answer <- c(0.2235294118, 0.3725490196, 0.4705882353,
+                       0.6209150327, 0.7058823529, 0.8235294118,
+                       0.9934640523, 1.0058823529, 1.2418300654,
+                       1.2941176471, 1.3411764706, 1.4529411765,
+                       1.5647058824, 1.862745098)
   expect_equal(Mobility(Bvalues, occupancy), mobility.answer)
 })
 
