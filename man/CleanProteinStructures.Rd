@@ -6,7 +6,7 @@
 \usage{
 CleanProteinStructures(prefix = "./alignTesting",
   CleanHydrogenAtoms = TRUE, CleanModeledAtoms = TRUE,
-  cutoff.prot.h2o.dist = 6, min.num.h2o = 20,
+  cutoff.prot.h2o.dist = 12, min.num.h2o = 20,
   cleanDir = "ProteinSystem", filename = "ProteinSystem")
 }
 \arguments{
@@ -21,11 +21,11 @@ removed; default: \code{TRUE}}
 \item{cutoff.prot.h2o.dist}{A numerical value setting the maximum distance
 between a protein atom (heteroatoms are ignored) and water oxygen atoms.
 The oxygen atoms equal to or less than this distance are retained;
-default: \code{6.0} Angstroms}
+default: \code{12.0} Angstroms. If \code{NA} is provided, the default value is set.}
 
 \item{min.num.h2o}{Minimum number of water oxygen atoms within a protein
 structure for it to be included in the conserved water analysis;
-default: 20}
+default: 20. If \code{NA} is provided, the minimum number of waters is set to 0.}
 
 \item{cleanDir}{A character string for the "cleaned" PDB structures to be
 written. The provided character string are appended with "_CLEANED";
