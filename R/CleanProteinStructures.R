@@ -24,6 +24,8 @@
 ## aug-10-2017 (exe) added @importFrom stats ...
 ## jan-17-2019 (exe) expanded o.bins (-1,2), b.bins (-100,200), and mob.bins (-6,6) to
 ##                   accomodate fringe values
+## jun-20-2019 (exe) in CleanProteinStructures() set user defined numerical values of NA
+##                   for cutoff.prot.h2o.dist and min.num.h2o to 12.0 and 0, respectively
 ##
 ## Please direct all questions to Emilio Xavier Esposito, PhD
 ## exeResearch LLC, East Lansing, Michigan 48823 USA
@@ -333,10 +335,10 @@ RetainWatersWithinX <- function(atoms.dist,
 #' @param cutoff.prot.h2o.dist A numerical value setting the maximum distance
 #'   between a protein atom (heteroatoms are ignored) and water oxygen atoms.
 #'   The oxygen atoms equal to or less than this distance are retained;
-#'   default: `6.0` Angstroms
+#'   default: `12.0` Angstroms. If `NA` is provided, the default value is set.
 #' @param min.num.h2o Minimum number of water oxygen atoms within a protein
 #'   structure for it to be included in the conserved water analysis;
-#'   default: 20
+#'   default: 20. If `NA` is provided, the minimum number of waters is set to 0.
 #' @param cleanDir A character string for the "cleaned" PDB structures to be
 #'   written. The provided character string are appended with "_CLEANED";
 #'   default: `"ProteinSystem"`
@@ -377,7 +379,7 @@ CleanProteinStructures <- function(prefix="./alignTesting",
                                    CleanHydrogenAtoms=TRUE,
                                    CleanModeledAtoms=TRUE,
                                    cutoff.prot.h2o.dist=6.0,
-                                   min.num.h2o = 20,
+                                   min.num.h2o=20,
                                    cleanDir="ProteinSystem",
                                    filename="ProteinSystem") {
 
@@ -385,12 +387,21 @@ CleanProteinStructures <- function(prefix="./alignTesting",
   ##----- the provided request
   the.call <- match.call()
 
-  ##----- check the user provided cutoff values
+  ## check the user provided cutoff values ----
+  ##_ if provided values are NA ----
+  if ( is.na(min.num.h2o) ) {
+    min.num.h2o <- 0
+  }
+  if ( is.na(cutoff.prot.h2o.dist) ) {
+    cutoff.prot.h2o.dist <- 12
+  }
+  ##_ if prot-h2o distance numeric, retain waters ----
   if ( is.numeric(cutoff.prot.h2o.dist) ) {
     RetainAtoms <- TRUE
   } else {
     RetainAtoms <- FALSE
   }
+
 
   ## CREATE now.date.time AND WORKSHEET NAMES ----------------------------------
   ##----- create the date and time portion of the filenames
@@ -590,7 +601,7 @@ CleanProteinStructures <- function(prefix="./alignTesting",
     }
 
 
-    ## REMOVE DISTANT WATER MOLECULES/OXYGEN ATOMS -----------------------------
+    ## REMOVE DISTANT WATER MOLECULES/OXYGEN ATOMS ----
     num.atoms <- nrow(atoms.oi)
     ##----- determine the protein, hetatom, and  water indices
     prot.het.h2o.idc <- ProtHetWatIndices(data=atoms.oi)
