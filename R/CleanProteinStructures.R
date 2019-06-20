@@ -378,7 +378,7 @@ RetainWatersWithinX <- function(atoms.dist,
 CleanProteinStructures <- function(prefix="./alignTesting",
                                    CleanHydrogenAtoms=TRUE,
                                    CleanModeledAtoms=TRUE,
-                                   cutoff.prot.h2o.dist=6.0,
+                                   cutoff.prot.h2o.dist=12.0,
                                    min.num.h2o=20,
                                    cleanDir="ProteinSystem",
                                    filename="ProteinSystem") {
@@ -511,7 +511,7 @@ CleanProteinStructures <- function(prefix="./alignTesting",
 
 
     ## ADD/UPDATE ELEMENTY SYMBOL (elesy) USING ATOM TYPE (elety) --------------
-    suppressWarnings( atoms.oi$elesy <- bio3d::atom2ele(atoms.oi$elety) )
+    # suppressWarnings( atoms.oi$elesy <- bio3d::atom2ele(atoms.oi$elety) )
 
 
     ## REMOVE HYDROGEN ATOMS ---------------------------------------------------
