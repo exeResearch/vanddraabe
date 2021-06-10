@@ -40,7 +40,7 @@ thrombin10.filename <- "thrombin10"
 thrombin10.PDBids <- c("1hai", "1abj", "1ppb", "1tmb", "1hah",
                        "1tmt", "1abi", "1thr", "1ths", "1ihs")
 
-thrombin10.PDBs <- get.pdb(ids=thrombin10.PDBids, split=FALSE, path="thrombin10_rawPDBs")
+thrombin10.PDBs <- get.pdb(ids=thrombin10.PDBids, split=FALSE, path="./thrombin10_rawPDBs")
 ```
 
 
