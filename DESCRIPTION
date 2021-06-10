@@ -9,8 +9,7 @@ Description: Identify and analyze conserved waters within crystallographic
   atoms and is related to conserved waters. An informatics derived set of 
   hydrophilicity values are provided based on a large, high-quality X-ray 
   protein structure dataset.
-Version: 1.1.1
-Date: 2019-06-10
+Version: 1.2.0
 Depends:
   R (>= 3.6.0)
 Imports:
