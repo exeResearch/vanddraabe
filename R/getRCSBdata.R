@@ -86,8 +86,8 @@
 #' @family Clean RCSB dataset
 #'
 getRCSBdata <- function (prefix = "./alignTesting",
-                              resolution = 3.0, rFree = 0.26, rObserved = 0.20,
-                              filename = "ProteinSystem") {
+                         resolution = 3.0, rFree = 0.26, rObserved = 0.20,
+                         filename = "ProteinSystem") {
 
   ##----- the provided call
   the.call <- match.call()
@@ -153,17 +153,15 @@ getRCSBdata <- function (prefix = "./alignTesting",
   ##----- remove structures with a resolution greater than the cutoff
   ##--- get the resolution, rObserved, and rFree values
   message("Please be patient... Getting PDB information from www.rcsb.org")
-  pdbs.info.orig <- bio3d::pdb.annotate(pdb.ids, unique = TRUE)
+  pdbs.info.orig <- bio3d::pdb.annotate(pdb.ids, unique = TRUE)  ## bio3d method
+
   ##--- re-arrange the pdbs.information data.frame
-  pdbs.info.col.order <- c("structureId", "resolution", "rObserved", "rFree",
-                           "chainId", "experimentalTechnique", "ligandId",
-                           "ligandName", "source", "scopDomain",
-                           "classification", "compound", "title",
-                           "citationAuthor", "journalName", "publicationYear",
-                           "citation", "structureTitle", "depositionDate",
-                           "structureMolecularWeight", "macromoleculeType",
-                           "entityId", "sequence", "chainLength", "db_id",
-                           "db_name")
+  pdbs.info.col.order <- c("structureId", "chainId", "macromoleculeType",
+                           "chainLength", "experimentalTechnique", "resolution",
+                           "scopDomain", "pfam",
+                           "ligandId", "ligandName", "source",
+                           "structureTitle", "citation",
+                           "rObserved", "rFree", "rWork", "spaceGroup")
 
   pdbs.info <- pdbs.info.orig[, pdbs.info.col.order]
 
